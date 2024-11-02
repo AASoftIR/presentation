@@ -84,6 +84,10 @@
 				transform: scale(0.9) !important;
 				padding: 12px;
 			}
+			.modal {
+				transition: all 0.5s ease-in-out;
+				cursor: pointer;
+			}
 		</style>
 	</head>
 	<body>
@@ -229,6 +233,14 @@
 						/>
 					</section>
 				</section>
+				<section data-background="#3d13d8" data-transition="zoom">
+					<h1>طرح مقاله من</h1>
+					<img
+						src="./dist/book/pro.png"
+						style="max-height: 100vh; border-radius: 25px"
+						class="modal"
+					/>
+				</section>
 				<section data-background="#3d1308" data-transition="zoom">
 					<h1>
 						<blockquote style="font-size: smaller">
@@ -268,7 +280,7 @@
 			});
 			Reveal.on("slidechanged", (event) => {
 				let state = Reveal.getState();
-				if (state.indexh == 7) {
+				if (state.indexh == 8) {
 					const jsConfetti = new JSConfetti();
 
 					jsConfetti.addConfetti({
@@ -289,6 +301,17 @@
 				document.querySelector(".slideL").style.display = "none";
 				document.querySelector(".pdf").style.display = "initial";
 			}
+			document.querySelector(".modal").addEventListener("click", () => {
+				if (document.querySelector(".modal").classList.contains("open")) {
+					document.querySelector(".modal").classList.remove("open");
+					document.querySelector(".modal").style.transform = "scale(1)";
+					document.querySelector(".modal").style.marginTop = "0";
+				} else {
+					document.querySelector(".modal").classList.add("open");
+					document.querySelector(".modal").style.transform = "scale(1.5)";
+					document.querySelector(".modal").style.marginTop = "-50px";
+				}
+			});
 		</script>
 	</body>
 </html>
