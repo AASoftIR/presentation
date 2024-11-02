@@ -43,10 +43,57 @@
 				font-family: "titr" !important;
 				font-weight: lighter;
 			}
+			.pdf {
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				text-align: center;
+				color: rgb(170, 28, 28) !important;
+				text-decoration: none;
+				font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+				font-size: 1.8rem;
+				border-radius: 50%;
+				background-color: #fff;
+				z-index: 10000;
+				transition: background-color 2s linear, transform 1s linear,
+					color 2s linear;
+				transform: scale(0.9) !important;
+				padding: 12px;
+			}
+			.pdf:hover {
+				background-color: slategrey;
+				color: #000 !important;
+				transform: scale(1.2);
+			}
+
+			.slideL {
+				display: none;
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				text-align: center;
+				color: rgb(170, 28, 28) !important;
+				text-decoration: none;
+				font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+				font-size: 1.3rem;
+				border-radius: 25px;
+				background-color: #fff;
+				z-index: 10000;
+				transition: background-color 2s linear, transform 1s linear,
+					color 2s linear;
+				transform: scale(0.9) !important;
+				padding: 12px;
+			}
 		</style>
 	</head>
 	<body>
 		<div class="reveal">
+			<a href="https://aasoftir.github.io/presentation/?print-pdf" class="pdf"
+				>PDF</a
+			>
+			<a href="https://aasoftir.github.io/presentation" class="slideL"
+				>Slider</a
+			>
 			<div class="slides" dir="rtl">
 				<section data-transition="fade">
 					<h1>عنوان مقاله: بررسی نظام آموزش و پرورش کشور چین</h1>
@@ -204,9 +251,6 @@
 		<script src="plugin/zoom/zoom.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
 		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
 				controlsLayout: "bottom-right",
@@ -234,6 +278,17 @@
 					});
 				}
 			});
+
+			const urlParams = new URLSearchParams(window.location.search);
+			const param = urlParams.has("print-pdf");
+			if (param) {
+				console.log(urlParams);
+				document.querySelector(".slideL").style.display = "initial";
+				document.querySelector(".pdf").style.display = "none";
+			} else {
+				document.querySelector(".slideL").style.display = "none";
+				document.querySelector(".pdf").style.display = "initial";
+			}
 		</script>
 	</body>
 </html>
